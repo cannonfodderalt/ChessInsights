@@ -1,3 +1,3 @@
 # Chess Insights
 
-![Page Screenshot](/wwwroot/images/PageReadME.png)
+![Page Screenshot](/wwwroot/images/ForReadME.png)
