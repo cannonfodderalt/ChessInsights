@@ -1,0 +1,17 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Upload New Games";
+}
+
+<div class="card mt-4" style="background-color: var(--card-bg); border-color: var(--card-border);">
+    <div class="card-body">
+        <h4 class="text-white">Upload New Games</h4>
+        <form method="post" enctype="multipart/form-data" asp-page-handler="Upload">
+            <div class="mb-3">
+                <input type="file" class="form-control" name="pgnFile" accept=".pgn" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
