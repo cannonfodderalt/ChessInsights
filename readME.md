@@ -1,15 +1,14 @@
-# ChessInsights: High-Volume Data Engineering & Analytics Suite
+# ChessInsights: Data Engineering & Analytics Suite
+
+![Page Screenshot](/wwwroot/images/ForReadME.png)
 
 ## Overview
-ChessInsights is an enterprise-grade data platform designed to process, model, and visualize massive chess datasets. By orchestrating a cloud-native pipeline between **Python**, **Azure Data Factory**, and **SQL Server**, the system transforms millions of raw PGN records into interactive intelligence. The project demonstrates a complete engineering lifecycle, from high-throughput ETL to a secure **.NET** web portal.
-
-## System Architecture
-The system uses a decoupled, scalable architecture to ensure low-latency reporting even as the dataset grows beyond 40 million records.
+ChessInsights is a data visualization designed to understand massive chess datasets. By orchestrating a pipeline between **Python**, **Azure Data Factory**, and **SQL Server**, the system transforms millions of raw PGN records into interactive intelligence. The project demonstrates a complete engineering lifecycle, from high-throughput ETL to a secure **.NET** web portal.
 
 ```mermaid
 graph TD
     subgraph "Data Acquisition"
-        A[Lumbra Gigabase - 1M+ PGNs] --> B[Python Stream Parser]
+        A[Lumbras Gigabase] --> B[Python Stream Parser]
     end
 
     subgraph "Cloud ETL & Orchestration"
@@ -27,10 +26,9 @@ graph TD
 
 ## Technical Deep Dive
 
-### **1. High-Throughput Data Engineering**
-*   **Streaming Ingestion:** To process **927K+ games** and **43 Million moves** (~7GB raw text) without memory bottlenecks, I developed a Python parser using a generator pattern. This sanitizes PGN headers and extracts metadata in real-time.
-*   **Azure Data Factory (ADF) Orchestration:** Implemented an automated pipeline to manage the transition from unstructured Blob storage to a relational database. This includes "Copy Data" activities configured for high-performance bulk inserts.
-*   **Relational Star Schema:** Designed a normalized SQL schema optimized for analytics. By utilizing **Clustered Columnstore Indexes** on the Move-level tables, the system maintains sub-second query performance for complex aggregations.
+### **1. Data Engineering**
+*   **Azure Data Factory (ADF) Orchestration:** Implemented an automated pipeline to manage the transition from unstructured Blob storage to a relational database. This includes "Copy Data" activities configured for bulk inserts.
+*   **Relational Star Schema:** Designed a normalized SQL schema optimized for analytics.
 
 ### **2. Analytics Features**
 *   **Upset Probability Analysis:** Developed custom DAX measures to calculate "Underdog Win Percentages," dynamically identifying performance outliers in games with a **100+ Elo differential**.
@@ -50,6 +48,5 @@ graph TD
 ## Setup & Deployment
 1. **Database:** Initialize the schema using the provided SQL scripts in `/Scripts/SQL`.
 2. **Cloud:** Import the ADF pipeline templates from `/Azure/Templates`.
-3. **Application:** Update the `Web.config` with your Azure Service Principal credentials and launch the .NET solution.# ChessInsights: High-Volume Data Engineering & Analytics Suite
+3. **Application:** Update the `Web.config` with your Azure Service Principal credentials and launch the .NET solution.
 
-![Page Screenshot](/wwwroot/images/ForReadME.png)
